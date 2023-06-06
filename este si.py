@@ -98,16 +98,16 @@ def a():
 
 
 
-                        x1_cb, y1_cb = lista[78][1:]
-                        x2_cb, y2_cb = lista[308][1:]
+                        x1_cb, y1_cb = lista[13][1:]
+                        x2_cb, y2_cb = lista[14][1:]
                         cx_cb, cy_cb = (x1_cb + x2_cb) // 2, (y1_cb + y2_cb) // 2
-                        #cv2.line(frame,(x1_cb,y1_cb),(x2_cb,y2_cb),(0,0,0),t)
-                        #cv2.circle(frame,(x1_cb,y1_cb),r,(0,0,0),cv2.FILLED)
-                        #cv2.circle(frame, (x2_cb, y2_cb), r, (0, 0, 0), cv2.FILLED)
-                        #cv2.circle(frame, (cx_cb, cy_cb), r, (0, 0, 0), cv2.FILLED)
+                        cv2.line(frame,(x1_cb,y1_cb),(x2_cb,y2_cb),(0,0,0),t)
+                        cv2.circle(frame,(x1_cb,y1_cb),r,(0,0,0),cv2.FILLED)
+                        cv2.circle(frame, (x2_cb, y2_cb), r, (0, 0, 0), cv2.FILLED)
+                        cv2.circle(frame, (cx_cb, cy_cb), r, (0, 0, 0), cv2.FILLED)
                         longitud_cb = math.hypot(x2_cb - x1_cb,
                                                    y2_cb - y1_cb)  # vector con orgen en las coordenadas indicadas
-                        #print(longitud_cb)
+                        print(longitud_cb)
 
 
                         # movimientos
@@ -142,11 +142,11 @@ def a():
 
                         if y_principal < -10:
                             text = "derecha"
-                            return text
+
 
                         elif y_principal > 10:
                             text = "izq"
-                            return text
+
 
                         elif x_principal < -5:
                             text = "abajo"
@@ -154,20 +154,20 @@ def a():
 
                         elif x_principal > 10:
                             text = "arriba"
-                            return text
+
 
                         elif longitud_boca > 60:
                             text = "boca"
-                            return text
+
 
 
                         elif longitud_cejas > 40:
                             text = "cejas"
-                            return text
 
-                        elif longitud_cb > 110:
+
+                        elif longitud_cb <= 1:
                             text = "cbbbbb"
-                            return text
+
 
                         else:
                             text = "centro"

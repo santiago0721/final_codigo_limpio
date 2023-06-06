@@ -1,5 +1,10 @@
 import random
 from random import *
+
+from jugador import jugador
+from monstruo import monstruo
+
+
 class mapa:
     def __init__(self,tamaño:int):
         self.tamaño = tamaño
@@ -18,10 +23,10 @@ class mapa:
             print(i)
 
     def agregar_beneficios(self):
-        armas = ["🔫","🗡️","🛠️"]
-        comidas = ["🍔","🍟","🌮"]
-        self.agregar_al_mapa(armas)
-        self.agregar_al_mapa(comidas)
+        self.armas = [["🔫"],["🗡️"],["🛠️"]]
+        self.comidas = [["🍔"],["🍟"],["🌮"]]
+        self.agregar_al_mapa(self.armas)
+        self.agregar_al_mapa(self.comidas)
 
 
     def agregar_al_mapa(self,data:list):
@@ -37,8 +42,38 @@ class mapa:
             columna = randrange(self.tamaño)
 
             if self.tablero[fila][columna] == [" "]:
-                self.tablero[fila][columna] = [dato_agregar]
+                self.tablero[fila][columna] = dato_agregar
                 contador +=1
 
-a = mapa(4)
-a.print_mapa()
+    def agregar_personaje(self,personaje):
+        while True:
+            fila = randrange(self.tamaño)
+            columna = randrange(self.tamaño)
+
+            if self.tablero[fila][columna] == [" "]:
+                self.tablero[fila][columna] = [personaje.personaje]
+                personaje.posicion = (fila,columna)
+                break
+
+    def ubi_comida(self,fila,columna):
+        if self.tablero[fila][columna] in self.comidas:
+            return True
+        return False
+
+    def ubi_armas(self,fila,columna):
+        if self.tablero[fila][columna] in self.armas:
+            return True
+        return False
+
+    def ubi_vacia(self,fila,columna):
+        if self.tablero[fila][columna] == [" "]:
+            return True
+        return False
+
+    def moverse_en_el_mapa(self,fila,columna,personaje,ambos=False):
+        if ambos:
+            self.tablero[fila][columna] += [personaje.personaje]
+        else:
+            self.tablero[fila][columna] = [personaje.personaje]
+
+
