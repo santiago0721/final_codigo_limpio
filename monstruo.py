@@ -12,7 +12,7 @@ class monstruo:
         if dato == "izq":
             return (self.posicion[0], self.posicion[1]-1)
         elif dato == "der":
-            return (self.posicion[0], self.posicion[1] - 1)
+            return (self.posicion[0], self.posicion[1] + 1)
         elif dato == "arr":
             return  (self.posicion[0]-1, self.posicion[1])
         else:

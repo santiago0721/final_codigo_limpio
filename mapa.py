@@ -31,7 +31,7 @@ class mapa:
 
     def agregar_al_mapa(self,data:list):
 
-        cantidad = randrange(self.tamaño)
+        cantidad = randrange(1,self.tamaño)
         contador = 0
 
         while True:
@@ -75,5 +75,11 @@ class mapa:
             self.tablero[fila][columna] += [personaje.personaje]
         else:
             self.tablero[fila][columna] = [personaje.personaje]
+
+    def limpiar_casilla(self,fila,columna,personaje):
+        if len(self.tablero[fila][columna]) >1:
+            self.tablero[fila][columna].remove(personaje.personaje)
+        else:
+            self.tablero[fila][columna] = [" "]
 
 

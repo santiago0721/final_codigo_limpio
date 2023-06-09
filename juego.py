@@ -17,11 +17,14 @@ class juego:
         self.mapa.print_mapa()
         self.turno_monstruo()
         self.turno_monstruo()
+        self.turno_monstruo()
+        self.turno_monstruo()
 
 
     def turno_monstruo(self):
+        print(" ")
         while True:
-            nueva_pos = monstruo.movimiento()
+            nueva_pos = self.monstruo.movimiento()
             if nueva_pos[0] >= 0 and nueva_pos[1] >= 0 and nueva_pos[0] < self.mapa.tamaño and nueva_pos[1] < self.mapa.tamaño:
                 break
 
@@ -35,6 +38,9 @@ class juego:
         else:
             self.jugador.disminuir_vida()
             self.mapa.moverse_en_el_mapa(nueva_pos[0], nueva_pos[1], self.monstruo,True)
+
+        fila_actual,columna_actual = self.monstruo.posicion
+        self.mapa.limpiar_casilla(fila_actual,columna_actual,self.monstruo)
 
         self.monstruo.cambiar_posicion(nueva_pos[0],nueva_pos[1])
 
